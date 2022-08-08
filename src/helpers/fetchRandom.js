@@ -1,14 +1,14 @@
-const url = "https://api.publicapis.org/entries";
+const url = "https://api.publicapis.org/random";
 
 const cabeceras = {
   origin: '*'
 };
 
-const fetchDataApi = async () => {
+const fetchRandom = async () => {
   const fetchData = await fetch(url, cabeceras);
   const data = await fetchData.json();
 
   console.log(data);
 }
 
-export default fetchDataApi;
+export default fetchRandom;
