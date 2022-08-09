@@ -23,36 +23,60 @@ let selecteds = []
 
 </script>
 
-<main class="container is-fluid">
-
-  <div class="columns is-mobile is-vcentered has-background-black">
+<main>
+  <div class="cabecera columns has-background-black">
   <div class="column">
-    <p class="has-text-white is-size-1">Public API for Public APIs</p>  
+    <h1 class="has-text-white is-size-1">Public API for Public APIs</h1>  
   </div>
-  <div class="column is-one-quarter is-mobile">
-    <div class="columns">
-      <a href="http://api.publicapis.org/" target="_blank" rel="noopener noreferrer">Base URL</a>
+  <div class="column is-narrow">
+    <div class="block">
+
+      <a class="button is-link is-outlined is-primary" href="http://api.publicapis.org/" target="_blank" rel="noopener noreferrer">Base URL</a>
+
     </div>
-    <div class="columns">
-      <a href="http://github.com/davemachado/public-api" target="_blank" rel="noopener noreferrer">Github Project</a>
+    <div class="block">
+
+      <a class="button is-link is-outlined is-primary" href="http://github.com/davemachado/public-api" target="_blank" rel="noopener noreferrer">Github Project</a>
     </div>
   </div>
 
 </div>
-<div class="columns">
-  <div class="column is-one-quarter">
-    <CheckBoxCategory {categories} on:array={array} />
+
+<div class="columns ">
+
+  <div class="categorias column is-3 mt-3">
+
+      <CheckBoxCategory {categories} on:array={array} />
+
   </div>
   <div class="column">
     <Tarjeta selecteds={selecteds} />
   </div>
 </div>
+
 </main>
 
 <style>
 
 main {
+  margin: auto;
   background-color: #222;
+  box-sizing: content-box;
 }
+
+.categorias {
+  border-bottom: 1px solid white ;
+  border-right: 1px solid white ;
+  border-left: 1px solid white ;
+  
+}
+
+.cabecera {
+  margin: auto;
+  border: 1px solid white;
+  border-radius: 1rem;
+}
+
+
 
 </style>
