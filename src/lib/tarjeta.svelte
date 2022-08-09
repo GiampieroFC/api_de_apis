@@ -22,9 +22,10 @@ const comparar = async () => {
 
 onMount(comparar)
 
-$: selecteds ? comparar() : console.log('algo paso');
-$: console.log('true', apis2);
-$: console.log('apis', apis);
+
+$: selecteds ? comparar() : console.error('🤔 Algo pasó, inténtalo de nuevo');
+// $: console.log('true', apis2);
+$: apis2 ? console.log("Lista modificada") : console.error('🤔 Algo pasó, inténtalo de nuevo');
 
 
 </script>
@@ -33,43 +34,95 @@ $: console.log('apis', apis);
   <div class="columns is-multiline is-centered">
     
     {#if apis2.length > 0}
-    {#await apis2}
-    esperando respuesta...
-    {:then}
-      <!-- promise was fulfilled -->
-      {#each apis2 as selected}
+
+       {#each apis2 as api}
          <!-- content here -->
-           <div class="column is-narrow-mobile">
-             <div class="box has-text-centered">
-               <p>{selected.API}</p>
-               <p>{selected.Description}</p>
-               <p>{selected.Auth}</p>
-               <p>{selected.HTTPS}</p>
-               <p>{selected.Cors}</p>
-               <p>{selected.Link}</p>
-               <p>{selected.Category}</p>
-             </div>
+                <div class="column is-narrow-desktop is-outlined">
+             <div class="box has-text-centered content">
+              <h2 class="is-size-3">
+                <a href={api.Link} target="_blank" rel="noopener noreferrer">{api.API}</a>
+              </h2>
+             
+              <blockquote class="mb-">{api.Description}</blockquote>
+
+<div class="field is-grouped is-grouped-multiline is-justify-content-center mt-5">
+  
+  <div class="control">
+    <div class="tags has-addons">
+      <span class="tag is-info">Category</span>
+      <span class="tag is-link ">{api.Category}</span>
+    </div>
+  </div>
+</div>
+
+  <div class="field is-grouped is-grouped-multiline is-justify-content-center">
+
+  <div class="control">
+    <div class="tags has-addons">
+      <span class="{api.HTTPS ? 'tag is-success has-text-weight-bold' : 'tag is-light has-text-grey-light'}">HTTPS</span>
+    </div>
+  </div>
+
+    <div class="control">
+    <div class="tags has-addons">
+      <span class="{api.Cors === 'yes' ? 'tag is-success has-text-weight-bold' : 'tag is-light has-text-grey-light'}">Cors</span>
+    </div>
+  </div>
+
+</div>
+</div>
            </div>
            {/each}
-           
-           {/await}
-       <!-- content here -->
+
     {:else}
-    {#each apis as selected}
-         <!-- content here -->
-           <div class="column is-narrow-mobile">
-             <div class="box has-text-centered">
-               <p>{selected.API}</p>
-               <p>{selected.Description}</p>
-               <p>{selected.Auth}</p>
-               <p>{selected.HTTPS}</p>
-               <p>{selected.Cors}</p>
-               <p>{selected.Link}</p>
-               <p>{selected.Category}</p>
-             </div>
+
+    {#if apis.length > 0}
+
+       {#each apis as api}
+            <!-- content here -->
+           <div class="column is-narrow-desktop is-outlined">
+             <div class="box has-text-centered content">
+              <h2 class="is-size-3">
+                <a href={api.Link} target="_blank" rel="noopener noreferrer">{api.API}</a>
+              </h2>
+             
+              <blockquote class="mb-">{api.Description}</blockquote>
+
+<div class="field is-grouped is-grouped-multiline is-justify-content-center mt-5">
+  
+  <div class="control">
+    <div class="tags has-addons">
+      <span class="tag is-info">Category</span>
+      <span class="tag is-link ">{api.Category}</span>
+    </div>
+  </div>
+</div>
+
+  <div class="field is-grouped is-grouped-multiline is-justify-content-center">
+
+  <div class="control">
+    <div class="tags has-addons">
+      <span class="{api.HTTPS ? 'tag is-success has-text-weight-bold' : 'tag is-light has-text-grey-light'}">HTTPS</span>
+    </div>
+  </div>
+
+    <div class="control">
+    <div class="tags has-addons">
+      <span class="{api.Cors === 'yes' ? 'tag is-success has-text-weight-bold' : 'tag is-light has-text-grey-light'}">Cors</span>
+    </div>
+  </div>
+
+</div>
+</div>
            </div>
-           {/each}
-       <!-- else content here -->
+         {/each}
+   
+         {:else}
+    <progress class="progress is-small is-info" max="100">Loading</progress>
+  
+    {/if}
+
+
     {/if}
 
          
@@ -78,5 +131,9 @@ $: console.log('apis', apis);
 </main>
 
 <style>
-
+  .box {
+    background-color: rgba(256, 256, 256, 0.2);
+    box-shadow: 10px 5px 5px black;
+  
+}
 </style>

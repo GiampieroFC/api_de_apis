@@ -26,7 +26,7 @@ $: (() => {
       {#each categories as category}
          <!-- content here -->
          
-         <label class="checkbox m-2" for={category}>
+         <label class="checkbox m-2 has-text-white" for={category}>
            <input type="checkbox" bind:group={array} name="array" id={category} value={category}>
          {category}
          </label>
@@ -50,5 +50,9 @@ $: (() => {
 </main>
 
 <style>
-  /* your styles go here */
+
+  main {
+    box-shadow: 10px 5px 5px black;
+  }
+
 </style>

@@ -25,9 +25,9 @@ let selecteds = []
 
 <main class="container is-fluid">
 
-  <div class="columns has-background-grey-darker is-mobile is-vcentered">
+  <div class="columns is-mobile is-vcentered has-background-black">
   <div class="column">
-    <h1>Public API for Public APIs</h1> 
+    <p class="has-text-white is-size-1">Public API for Public APIs</p>  
   </div>
   <div class="column is-one-quarter is-mobile">
     <div class="columns">
@@ -40,7 +40,7 @@ let selecteds = []
 
 </div>
 <div class="columns">
-  <div class="column has-background-grey is-one-quarter">
+  <div class="column is-one-quarter">
     <CheckBoxCategory {categories} on:array={array} />
   </div>
   <div class="column">
@@ -51,8 +51,8 @@ let selecteds = []
 
 <style>
 
-/* :global(*) {
-  border: 1px solid black;
-} */
+main {
+  background-color: #222;
+}
 
 </style>
