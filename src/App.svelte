@@ -1,11 +1,25 @@
 <script>
-import fetchDataApi from "./helpers/fetchDataApi";
-import fetchCategories from "./helpers/fetchCategories";
-import fetchRandom from "./helpers/fetchRandom";
+  import fetchCategories from "./helpers/fetchCategories";
+  import Tarjeta from "./lib/Tarjeta.svelte";
+  import CheckBoxCategory from "./lib/CheckBoxCategory.svelte";
+// import fetchDataApi from "./helpers/fetchDataApi";
+// import fetchRandom from "./helpers/fetchRandom";
+// fetchRandom();
 
-fetchDataApi();
-fetchCategories();
-fetchRandom();
+// let apis = fetchDataApi();
+let categories = fetchCategories();
+
+let selecteds = []
+
+
+ const array = async (event) => {
+    
+   selecteds = await event.detail
+
+  // categories = await categories.filter( async (el) => await el.Category === selecteds[0])
+  
+
+	}
 
 </script>
 
@@ -17,28 +31,28 @@ fetchRandom();
   </div>
   <div class="column is-one-quarter is-mobile">
     <div class="columns">
-      <a href="http://github.com/davemachado/public-api" target="_blank" rel="noopener noreferrer">Github Project</a>
+      <a href="http://api.publicapis.org/" target="_blank" rel="noopener noreferrer">Base URL</a>
     </div>
     <div class="columns">
-      <a href="http://api.publicapis.org/" target="_blank" rel="noopener noreferrer">Base URL</a>
+      <a href="http://github.com/davemachado/public-api" target="_blank" rel="noopener noreferrer">Github Project</a>
     </div>
   </div>
 
 </div>
 <div class="columns">
   <div class="column has-background-grey is-one-quarter">
-    First column
+    <CheckBoxCategory {categories} on:array={array} />
   </div>
   <div class="column">
-    Second column
+    <Tarjeta selecteds={selecteds} />
   </div>
 </div>
 </main>
 
 <style>
 
-* {
+/* :global(*) {
   border: 1px solid black;
-}
+} */
 
 </style>

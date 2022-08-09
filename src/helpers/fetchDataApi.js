@@ -7,8 +7,9 @@ const cabeceras = {
 const fetchDataApi = async () => {
   const fetchData = await fetch(url, cabeceras);
   const data = await fetchData.json();
+  const apis = await data.entries
 
-  console.log(data);
+  return apis
 }
 
 export default fetchDataApi;

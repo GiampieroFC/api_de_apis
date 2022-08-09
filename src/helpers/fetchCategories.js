@@ -7,8 +7,9 @@ const cabeceras = {
 const fetchCategories = async () => {
   const fetchData = await fetch(url, cabeceras);
   const data = await fetchData.json();
+  const categories = await data.categories
 
-  console.log(data);
+  return categories
 }
 
 export default fetchCategories;
