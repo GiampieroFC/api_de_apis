@@ -11,6 +11,7 @@ $: (() => {
     dispatch('array', array);
   })()
 
+$: results = results
 
 </script>
 
