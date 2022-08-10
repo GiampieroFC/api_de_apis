@@ -1,6 +1,6 @@
 <script>
   import fetchCategories from "./helpers/fetchCategories";
-  import Tarjeta from "./lib/Tarjeta.svelte";
+  import Tarjeta from "./lib/tarjeta.svelte";
   import CheckBoxCategory from "./lib/CheckBoxCategory.svelte";
 import fetchDataApi from "./helpers/fetchDataApi";
 // import fetchRandom from "./helpers/fetchRandom";
