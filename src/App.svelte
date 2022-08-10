@@ -16,9 +16,9 @@ let toCat = []
 const sendToCat = async (e) => {
   if (e.detail.length === 0) {
     let api = await apis
-    toCat = api.length
+    toCat = api
   } else {
-    toCat = await e.detail.length
+    toCat = await e.detail
   }
 }
 

@@ -11,7 +11,7 @@ $: (() => {
     dispatch('array', array);
   })()
 
-$: results = results
+$: console.log(results.length);
 
 </script>
 
@@ -20,7 +20,16 @@ $: results = results
  <form>
 
 <div class="box m-2 p-2">
-  <p>Results: {results}</p>
+  {#await results}
+  <p>Results:</p> <div class="field">
+  <div class="control is-small is-loading">
+    <input class="input is-small" type="text" placeholder="Small loading input">
+  </div>
+</div> 
+  {:then results} 
+  <p>Results: {results.length}</p>
+  {/await}
+  
   <p>Selected categories: {array.length}</p>
 </div>
 
