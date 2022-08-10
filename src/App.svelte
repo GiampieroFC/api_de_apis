@@ -2,15 +2,27 @@
   import fetchCategories from "./helpers/fetchCategories";
   import Tarjeta from "./lib/Tarjeta.svelte";
   import CheckBoxCategory from "./lib/CheckBoxCategory.svelte";
-// import fetchDataApi from "./helpers/fetchDataApi";
+import fetchDataApi from "./helpers/fetchDataApi";
 // import fetchRandom from "./helpers/fetchRandom";
 // fetchRandom();
 
-// let apis = fetchDataApi();
+let apis = fetchDataApi();
 let categories = fetchCategories();
 
 let selecteds = []
 
+let toCat = []
+
+const sendToCat = async (e) => {
+  if (e.detail.length === 0) {
+    let api = await apis
+    toCat = api.length
+  } else {
+    toCat = await e.detail.length
+  }
+}
+
+$: toCat
 
  const array = async (event) => {
     
@@ -46,11 +58,11 @@ let selecteds = []
 
   <div class="categorias column is-3 mt-3">
 
-      <CheckBoxCategory {categories} on:array={array} />
+      <CheckBoxCategory results={toCat} {categories} on:array={array} />
 
   </div>
   <div class="column">
-    <Tarjeta selecteds={selecteds} />
+    <Tarjeta on:key={sendToCat} selecteds={selecteds} />
   </div>
 </div>
 

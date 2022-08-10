@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   export let categories = [];
+  export let results;
 
   const dispatch = createEventDispatcher();
 
@@ -17,13 +18,20 @@ $: (() => {
 
  <form>
 
-  {#await categories}
+<div class="box m-2 p-2">
+  <p>Results: {results}</p>
+  <p>Selected categories: {array.length}</p>
+</div>
+
+<h2 class="has-text-white is-family-sans-serif is-size-2 ml-4 is-underlined">Categories:</h2>
+  
+{#await categories}
   
   <progress class="progress is-small is-info" max="100">15%</progress>
     
     {:then categories}
 
-      <h2 class="has-text-white is-family-sans-serif is-size-2 ml-4 is-underlined">Categories:</h2>
+      
 
       {#each categories as category}
          <!-- content here -->
