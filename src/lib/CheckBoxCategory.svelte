@@ -11,7 +11,7 @@ $: (() => {
     dispatch('array', array);
   })()
 
-$: console.log(results.length);
+$: results.length > 0 ? console.log(results.length) : console.log(results.length)
 
 </script>
 
