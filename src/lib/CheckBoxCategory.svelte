@@ -63,7 +63,7 @@ $: results.length > 0 ? console.log(results.length) : console.log(results.length
   </form>
   <div class="buttons has-addons is-centered">
 <button class="button is-info is-outlined is-rounded" on:click={() => array = []}>
-  Limpiar
+  Clean
 </button>
 </div>
 
