@@ -23,6 +23,7 @@ const sendToCat = async (e) => {
 }
 
 $: toCat
+$: console.log(apis);
 
  const array = async (event) => {
     
